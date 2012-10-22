@@ -1,4 +1,3 @@
-package ai.eightpuzzle;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,7 +27,7 @@ public class PuzzleState {
 	private int level; // level of this state in relation to the root
 
 	private int outOfPlace = 0;
-	
+
 	private final int[] GOAL = new int[]{1, 2, 3, 8, 0, 4, 7, 6, 5};
 
 	private int manDist = 0;
@@ -72,7 +71,7 @@ public class PuzzleState {
 				}
 			}
 		}
-		
+
 	}
 
 	private void setOutOfPlace() {
@@ -80,14 +79,13 @@ public class PuzzleState {
 			if (currentState[i] != GOAL[i]) {
 				outOfPlace++;
 			}
-		} 
+		}
 	}
 
 	// copy the state, and make a new PuzzleState object
 	public PuzzleState(PuzzleState another) {
 
-		this.currentState = another.copyOfTiles(); // 'tiles' is array, cannot be
-											// assigned directly
+		this.currentState = another.copyOfTiles(); // 'tiles' is array, cannot be assigned directly
 		this.pos = another.pos;
 		this.path = another.path;
 		this.level = another.level;
@@ -111,7 +109,7 @@ public class PuzzleState {
 		else
 			return false;
 	}
-	
+
 	public int[] getCurrentState() {
 		return currentState;
 	}
@@ -221,7 +219,7 @@ public class PuzzleState {
 		currentState[pos] = tmp;
 		pos += direction;
 	}
-	
+
 	// black tile is identified by 'pos',
 	// and the other is identified by direction
 	private void swapTiles(int direction) {
@@ -250,7 +248,7 @@ public class PuzzleState {
 		default:
 			throw new RuntimeException("invalid direction");
 		}
-		
+
 		if (currentState[pos] != BLACK_TILE) {
 			throw new RuntimeException("pos var at wrong place!");
 		}

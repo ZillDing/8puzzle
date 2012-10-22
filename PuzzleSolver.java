@@ -1,4 +1,3 @@
-package ai.eightpuzzle;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -61,9 +60,7 @@ public class PuzzleSolver {
 
 			// get all possible unvisited moves
 			ArrayList<PuzzleState> possibleMoves = candidate.children();
-			ArrayList<PuzzleState> nextMoves = new ArrayList<PuzzleState>(); // possible
-																				// unvisited
-																				// moves
+			ArrayList<PuzzleState> nextMoves = new ArrayList<PuzzleState>(); // possible unvisited moves
 
 			for (PuzzleState move : possibleMoves) {
 				if (!visited.contains(move)) { // the move is not visited yet.
@@ -75,19 +72,9 @@ public class PuzzleSolver {
 			if (nextMoves.isEmpty()) {
 				continue;
 			}
-			
-			/* not need any longer
-			// calculate the heuristic value of all states
-			// that are going to be in the open list.
-
-			for (PuzzleState move : nextMoves) {
-				setHeuristicValue(move);
-			}
-			*/
 
 			// put them into the open list,
 			// and sort the list
-
 			candidates.addAll(nextMoves); // append to the end
 			Collections.sort(candidates, new HeuristicComparator());
 
@@ -98,27 +85,5 @@ public class PuzzleSolver {
 		return null;
 
 	}
-	
-	/* not used any more since got substitution
-	// use the 'goalState' as a reference, and
-	// set the heuristic value of this state.
-	private void setHeuristicValue(PuzzleState state) {
-		int count = 0;
-		int[] curTiles = state.getTiles();
-		int[] refTiles = goalState.getTiles();
 
-		for (int i = 0; i < PuzzleState.PUZZLE_SIZE; i++) {
-			int cur, ref;
-			cur = curTiles[i];
-			ref = refTiles[i];
-
-			// misplacement other than black tile
-			if (cur != 0 && cur != ref) {
-				count++;
-			}
-		}
-
-		state.setHeuristic(count);
-	}
-	*/
 }

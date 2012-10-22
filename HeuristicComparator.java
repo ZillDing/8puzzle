@@ -1,4 +1,3 @@
-package ai.eightpuzzle;
 import java.util.Comparator;
 
 public class HeuristicComparator implements Comparator<PuzzleState> {

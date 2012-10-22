@@ -1,4 +1,3 @@
-package ai.eightpuzzle;
 import java.util.Scanner;
 
 public class EightPuzzle {
