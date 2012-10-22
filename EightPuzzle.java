@@ -5,9 +5,6 @@ public class EightPuzzle {
 	public static void main(String[] args) {
 
 		Scanner in = new Scanner(System.in);
-
-		introduction();
-
 		int size = PuzzleState.PUZZLE_SIZE;
 		int[] input = new int[size]; // to hold user inputs of 9 int
 
@@ -20,7 +17,6 @@ public class EightPuzzle {
 		// call PuzzleRunner to solve it
 		PuzzleSolver solver = new PuzzleSolver(input); // instantiate
 		String path = solver.solve();
-
 		// output control.
 		System.out.println();
 
@@ -32,11 +28,4 @@ public class EightPuzzle {
 		}
 
 	}
-
-	// Explain how to input,
-	// and what output to expect.
-	private static void introduction() {
-
-	}
-
 }

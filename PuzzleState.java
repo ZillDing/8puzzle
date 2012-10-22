@@ -6,10 +6,8 @@ import java.util.Arrays;
 public class PuzzleState {
 	// size of the puzzle
 	public static final int PUZZLE_SIZE = 9;
-
 	// numbers on the tiles
 	public static final int BLACK_TILE = 0;
-
 	// These constants are number of indexes
 	// 'pos' need to move to reach the semantic
 	// position on the 8-puzzle
@@ -23,13 +21,9 @@ public class PuzzleState {
 	private int pos; // pos of the black_tile
 
 	private String path; // the path been generated
-
 	private int level; // level of this state in relation to the root
-
 	private int outOfPlace = 0;
-
 	private final int[] GOAL = new int[]{1, 2, 3, 8, 0, 4, 7, 6, 5};
-
 	private int manDist = 0;
 
 	// this is the constructor
@@ -38,7 +32,6 @@ public class PuzzleState {
 		int size = board.length;
 
 		currentState = new int[size];
-
 		for (int i = 0; i < size; i++) {
 			int val = board[i];
 			currentState[i] = val;
@@ -55,7 +48,6 @@ public class PuzzleState {
 		// get the number of the tiles which are out of place
 		setOutOfPlace();
 		setManDist();
-
 	}
 
 	private void setManDist() {
@@ -71,7 +63,6 @@ public class PuzzleState {
 				}
 			}
 		}
-
 	}
 
 	private void setOutOfPlace() {
@@ -84,7 +75,6 @@ public class PuzzleState {
 
 	// copy the state, and make a new PuzzleState object
 	public PuzzleState(PuzzleState another) {
-
 		this.currentState = another.copyOfTiles(); // 'tiles' is array, cannot be assigned directly
 		this.pos = another.pos;
 		this.path = another.path;
@@ -100,7 +90,6 @@ public class PuzzleState {
 	// two Puzzle objects
 	@Override
 	public boolean equals(Object another) {
-
 		// check extreme case
 		if (another == null)
 			return false;
@@ -153,11 +142,9 @@ public class PuzzleState {
 
 	private int[] copyOfTiles() {
 		int[] copy = new int[PUZZLE_SIZE];
-
 		for (int i = 0; i < PUZZLE_SIZE; i++) {
 			copy[i] = currentState[i];
 		}
-
 		return copy;
 	}
 
@@ -166,7 +153,6 @@ public class PuzzleState {
 	public ArrayList<PuzzleState> children() {
 
 		ArrayList<PuzzleState> childr = new ArrayList<PuzzleState>();
-
 		// check left/right/up/down
 		// a local variable represent the next state
 		PuzzleState child;
@@ -198,7 +184,6 @@ public class PuzzleState {
 	// copy a new state from this state,
 	// swap the tiles according to input.
 	private PuzzleState bornChild(int direction) {
-
 		// make a copy
 		PuzzleState child = new PuzzleState(this);
 
@@ -223,7 +208,6 @@ public class PuzzleState {
 	// black tile is identified by 'pos',
 	// and the other is identified by direction
 	private void swapTiles(int direction) {
-
 		switch (direction) {
 		case LEFT:
 			if (canMoveLeft()) {
@@ -248,14 +232,12 @@ public class PuzzleState {
 		default:
 			throw new RuntimeException("invalid direction");
 		}
-
 		if (currentState[pos] != BLACK_TILE) {
 			throw new RuntimeException("pos var at wrong place!");
 		}
 	}
 
 	private boolean canMoveLeft() {
-
 		if (pos % 3 == 0)
 			return false;
 		else
@@ -263,7 +245,6 @@ public class PuzzleState {
 	}
 
 	private boolean canMoveRight() {
-
 		if (pos % 3 ==2) {
 			return false;
 		} else
@@ -271,7 +252,6 @@ public class PuzzleState {
 	}
 
 	private boolean canMoveUp() {
-
 		if (pos < 3) {
 			return false;
 		} else

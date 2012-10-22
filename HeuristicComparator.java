@@ -1,8 +1,7 @@
 import java.util.Comparator;
 
 public class HeuristicComparator implements Comparator<PuzzleState> {
-	// compare the A* value, including heuristic value
-	// and greedy value
+	// compare the A* value, including heuristic value and greedy value
 	@Override
 	public int compare(PuzzleState obj1, PuzzleState obj2) {
 

@@ -16,14 +16,9 @@ public class PuzzleSolver {
 
 	public PuzzleSolver(int[] arr) {
 		initState = new PuzzleState(arr);
-
 		// init the goal state
 		int[] goal = { 1, 2, 3, 8, 0, 4, 7, 6, 5 };
-
 		goalState = new PuzzleState(goal);
-
-		// init open and close lists
-
 		// close-list is an arraylist of states,
 		// which mimics a set
 		visited = new ArrayList<PuzzleState>();
@@ -31,7 +26,6 @@ public class PuzzleSolver {
 		// open-list is also an arraylist, which
 		// mimics a queue
 		candidates = new ArrayList<PuzzleState>();
-
 	}
 
 	public String solve() {
@@ -42,9 +36,7 @@ public class PuzzleSolver {
 
 		// check the candidates in open-list,
 		// until no more candidates
-
 		while (!candidates.isEmpty()) {
-
 			// take out the front of the queue,
 			// and mark it as visited
 			PuzzleState candidate = candidates.remove(0);
@@ -72,18 +64,14 @@ public class PuzzleSolver {
 			if (nextMoves.isEmpty()) {
 				continue;
 			}
-
 			// put them into the open list,
 			// and sort the list
 			candidates.addAll(nextMoves); // append to the end
 			Collections.sort(candidates, new HeuristicComparator());
 
 		}
-
 		// if ever jumped out of the queue,
 		// it means the goalState is not found.
 		return null;
-
 	}
-
 }
