@@ -8,16 +8,11 @@ import java.util.Collections;
  */
 public class PuzzleSolver {
     private PuzzleState initState;
-    private PuzzleState goalState;
-
     private ArrayList<PuzzleState> visited; // close-list
     private ArrayList<PuzzleState> candidates;
 
     public PuzzleSolver(int[] arr) {
         initState = new PuzzleState(arr);
-        // init the goal state
-        int[] goal = { 1, 2, 3, 8, 0, 4, 7, 6, 5 };
-        goalState = new PuzzleState(goal);
         // close-list is an arraylist of states,
         // which mimics a set
         visited = new ArrayList<PuzzleState>();
@@ -45,7 +40,7 @@ public class PuzzleSolver {
             }
 
             // is this state the goal state?
-            if (candidate.equals(goalState)) {
+            if (candidate.isGoal()) {
                 return candidate.getPath();
             }
 

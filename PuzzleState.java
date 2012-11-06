@@ -24,7 +24,7 @@ public class PuzzleState {
     private String path; // the path been generated
     private int level; // level of this state in relation to the root
     private int outOfPlace = 0;
-    private final int[] GOAL = new int[]{1, 2, 3, 8, 0, 4, 7, 6, 5};
+    private final int[] goal = new int[]{1, 2, 3, 8, 0, 4, 7, 6, 5};
     private int manDist = 0;
 
     // this is the constructor
@@ -51,6 +51,14 @@ public class PuzzleState {
         setManDist();
     }
 
+    public boolean isGoal() {
+        if (Arrays.equals(currentState, goal)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void setManDist() {
         int index = -1;
         for (int y = 0; y < 3; y++) {
@@ -68,7 +76,7 @@ public class PuzzleState {
 
     private void setOutOfPlace() {
         for (int i = 0; i < currentState.length; i++) {
-            if (currentState[i] != GOAL[i]) {
+            if (currentState[i] != goal[i]) {
                 outOfPlace++;
             }
         }
